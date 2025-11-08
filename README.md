@@ -1,4 +1,4 @@
-# Rover Failsafe System - Mission A
+# Rover Failsafe System - Mission A ✅
 
 Simulates a Mars rover with a critical failsafe: if Earth signal is lost for &gt;90 seconds, the rover automatically shuts down its motors.
 
