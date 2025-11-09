@@ -1,34 +1,34 @@
-# Rover Failsafe System - Mission A ✅
+# Rover-Failsafe (Learning Project)
 
-Simulates a Mars rover with a critical failsafe: if Earth signal is lost for &gt;90 seconds, the rover automatically shuts down its motors.
+**Status:** Educational / Experimental  
+**Purpose:** Learning Bash scripting, system design, failsafe mechanisms  
+**Date:** November 2025  
 
-## Mission A: Heartbeat Monitor & Loss-of-Signal Failsafe
+## Overview
+A conceptual failsafe system for an autonomous rover with health monitoring and graceful degradation.
 
-### Components
-- **earth_server.sh**: Simulates Earth communication (30% random failure)
-- **rover_motor.py**: Simulates rover motor process
-- **watchdog.sh**: Monitors signal and triggers failsafe after 3 consecutive failures
+**Note:** This is a learning project created while transitioning to DevOps. 
+The architecture and concepts are valid, but this is not production-ready code.
 
-### Usage
+## What I learned
+- Bash scripting (process management, signal handling)
+- JSON logging for system events
+- Health check patterns
+- Graceful shutdown and recovery
+
+## Architecture
+- `earth_server.sh` - Main server with failsafe logic
+- Health monitoring every 30 seconds
+- Graceful shutdown after 3 consecutive failures
+- JSON structured logging
+
+## How to run
 ```bash
-# Terminal 1: Start rover motor
-./rover_motor.py
+bash earth_server.sh
+```
 
-# Terminal 2: Start watchdog
-./watchdog.sh
-
-# After ~5-15 min, check log
-cat failsafe.log
-
-Expected Output
-JSON
-
-{"timestamp":"2025-11-08T17:45:45+01:00","event":"LOSS_OF_SIGNAL","action":"MOTOR_SHUTDOWN"}
-
-Test Results
-
-    Debug mode (100% failure): ✅ Failsafe triggered in 90s
-    Real mode (30% failure): ✅ Failsafe triggered after ~15min
-
-Portfolio Impact
-Demonstrates reliability engineering, process management, and structured logging (critical for ESA, Palantir, Helsing).
+## Next Steps
+- Add proper error handling
+- Implement Docker containerization
+- Add comprehensive testing
+- Create monitoring dashboard
